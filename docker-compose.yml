@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: blog_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: blog_user
+      POSTGRES_PASSWORD: blog_password
+      POSTGRES_DB: blog_db
+    volumes:
+      - blog_pg_data:/var/lib/postgresql/data
+    networks:
+      - blog_net
+
+volumes:
+  blog_pg_data:
+
+networks:
+  blog_net:
+    driver: bridge
