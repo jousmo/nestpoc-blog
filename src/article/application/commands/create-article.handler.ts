@@ -3,8 +3,8 @@ import { CreateArticleCommand } from './create-article.command';
 import { ArticleRepository } from '../../domain/repositories/article.repository';
 import { UserRepository } from '../../domain/repositories/user.repository';
 import { Article } from '../../domain/entities/article.domain-entity';
-import { generateUUID } from '../../../shared/utils/uuid';
 import { NotFoundException } from '@nestjs/common';
+import { IdGeneratorService } from 'src/shared/domain/contracts/id-generator.service';
 
 @CommandHandler(CreateArticleCommand)
 export class CreateArticleHandler
@@ -13,6 +13,7 @@ export class CreateArticleHandler
   constructor(
     private readonly articleRepository: ArticleRepository,
     private readonly userRepository: UserRepository,
+    private readonly idGeneratorService: IdGeneratorService,
   ) {}
 
   async execute(command: CreateArticleCommand): Promise<Article> {
@@ -24,7 +25,7 @@ export class CreateArticleHandler
       throw new NotFoundException(`User with id ${userId} not found`);
     }
 
-    const id = generateUUID();
+    const id = this.idGeneratorService.createId();
     const article = Article.create(id, title, content, userId, user);
     return this.articleRepository.save(article);
   }

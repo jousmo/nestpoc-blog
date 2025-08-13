@@ -2,7 +2,7 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllUsersQuery } from './get-all-users.query';
 import { UserRepository } from '../../domain/repositories/user.repository';
 import { User } from '../../domain/entities/user.domain-entity';
-import { PaginatedResultType } from '../../../shared/types/paginated-result.type';
+import { PaginatedResultType } from '../../../shared/domain/contracts/paginated-result.type';
 
 @QueryHandler(GetAllUsersQuery)
 export class GetAllUsersHandler implements IQueryHandler<GetAllUsersQuery> {

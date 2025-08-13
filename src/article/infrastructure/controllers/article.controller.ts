@@ -18,9 +18,9 @@ import { GetArticleByIdQuery } from '../../application/queries/get-article-by-id
 import { DeleteArticleByIdCommand } from '../../application/commands/delete-article-by-id.command';
 import { UpdateArticleDto } from '../../application/dto/update-article.dto';
 import { UpdateArticleCommand } from '../../application/commands/update-article.command';
-import { PaginationQueryDto } from '../../../shared/dto/pagination-query.dto';
-import { PaginatedResponseDto } from '../../../shared/dto/paginated-response.dto';
-import { PaginatedResultType } from '../../../shared/types/paginated-result.type';
+import { PaginationQueryDto } from '../../../shared/infrastructure/dto/pagination-query.dto';
+import { PaginatedResponseDto } from '../../../shared/infrastructure/dto/paginated-response.dto';
+import { PaginatedResultType } from '../../../shared/domain/contracts/paginated-result.type';
 import { GetAllArticleQuery } from 'src/article/application/queries/get-all-articles.query';
 
 @Controller('articles')
