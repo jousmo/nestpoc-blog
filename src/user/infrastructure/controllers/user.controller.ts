@@ -21,9 +21,9 @@ import { UpdateUserCommand } from '../../application/commands/update-user.comman
 import { UserResponseDto } from './dto/user-response.dto';
 import { User } from '../../domain/entities/user.domain-entity';
 import { GetAllUsersQuery } from '../../application/queries/get-all-users.query';
-import { PaginationQueryDto } from '../../../shared/dto/pagination-query.dto';
-import { PaginatedResponseDto } from '../../../shared/dto/paginated-response.dto';
-import { PaginatedResultType } from '../../../shared/types/paginated-result.type';
+import { PaginationQueryDto } from '../../../shared/infrastructure/dto/pagination-query.dto';
+import { PaginatedResponseDto } from '../../../shared/infrastructure/dto/paginated-response.dto';
+import { PaginatedResultType } from '../../../shared/domain/contracts/paginated-result.type';
 
 @Controller('users')
 export class UserController {
