@@ -1,3 +1,3 @@
-export interface IdGeneratorService {
-  createId(): string;
+export abstract class IdGeneratorService {
+  abstract createId(): string;
 }

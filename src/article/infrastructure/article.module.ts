@@ -13,11 +13,13 @@ import { GetArticleByIdHandler } from '../application/queries/get-article-by-id.
 import { DeleteArticleByIdHandler } from '../application/commands/delete-article-by-id.handler';
 import { UpdateArticleHandler } from '../application/commands/update-article.handler';
 import { GetAllArticlesHandler } from '../application/queries/get-all-articles.handler';
+import { SharedModule } from '../../shared/infrastructure/shared.module';
 
 @Module({
   imports: [
     CqrsModule,
     TypeOrmModule.forFeature([ArticleOrmEntity, UserOrmEntity]),
+    SharedModule,
   ],
   controllers: [ArticleController],
   providers: [

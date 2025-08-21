@@ -11,9 +11,14 @@ import { GetUserByEmailHandler } from '../application/queries/get-user-by-email.
 import { DeleteUserByIdHandler } from '../application/commands/delete-user-by-id.handler';
 import { UpdateUserHandler } from '../application/commands/update-user.handler';
 import { GetAllUsersHandler } from '../application/queries/get-all-users.handler';
+import { SharedModule } from '../../shared/infrastructure/shared.module';
 
 @Module({
-  imports: [CqrsModule, TypeOrmModule.forFeature([UserOrmEntity])],
+  imports: [
+    CqrsModule,
+    TypeOrmModule.forFeature([UserOrmEntity]),
+    SharedModule
+  ],
   controllers: [UserController],
   providers: [
     {
