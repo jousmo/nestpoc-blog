@@ -1,19 +1,21 @@
+import { Inject, NotFoundException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { CreateArticleCommand } from './create-article.command';
+import { IDENTIFIER_GENERATOR } from 'src/shared/application/const/tokens';
+import { IIdentifierGenerator } from 'src/shared/domain/contracts/id-generator.contract';
+import { Article } from '../../domain/entities/article.domain-entity';
 import { ArticleRepository } from '../../domain/repositories/article.repository';
 import { UserRepository } from '../../domain/repositories/user.repository';
-import { Article } from '../../domain/entities/article.domain-entity';
-import { NotFoundException } from '@nestjs/common';
-import { IdGeneratorService } from 'src/shared/domain/contracts/id-generator.service';
+import { CreateArticleCommand } from './create-article.command';
 
 @CommandHandler(CreateArticleCommand)
 export class CreateArticleHandler
   implements ICommandHandler<CreateArticleCommand>
 {
   constructor(
+    @Inject(IDENTIFIER_GENERATOR)
+    private readonly idGeneratorService: IIdentifierGenerator,
     private readonly articleRepository: ArticleRepository,
     private readonly userRepository: UserRepository,
-    private readonly idGeneratorService: IdGeneratorService,
   ) {}
 
   async execute(command: CreateArticleCommand): Promise<Article> {
