@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
-import { IdGeneratorService } from '../domain/contracts/id-generator.service';
+import { IDENTIFIER_GENERATOR } from '../application/const/tokens';
 import { IdGeneratorServiceImpl } from './services/id-generator.service.impl';
 
 @Module({
   providers: [
     {
-      provide: IdGeneratorService,
+      provide: IDENTIFIER_GENERATOR,
       useClass: IdGeneratorServiceImpl,
     },
   ],
-  exports: [IdGeneratorService],
+  exports: [IDENTIFIER_GENERATOR],
 })
 export class SharedModule {}

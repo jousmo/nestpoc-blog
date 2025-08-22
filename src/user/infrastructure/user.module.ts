@@ -17,7 +17,7 @@ import { SharedModule } from '../../shared/infrastructure/shared.module';
   imports: [
     CqrsModule,
     TypeOrmModule.forFeature([UserOrmEntity]),
-    SharedModule
+    SharedModule,
   ],
   controllers: [UserController],
   providers: [
