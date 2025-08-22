@@ -29,6 +29,25 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'interface',
+          format: ['PascalCase'],
+          custom: {
+            regex: '^I[A-Z]',
+            match: true,
+          },
+        },
+        {
+          selector: 'enum',
+          format: ['PascalCase'],
+          custom: {
+            regex: '^[a-zA-Z]+Enum',
+            match: true,
+          },
+        },
+      ],
     },
   },
   // Hexagonal Architecture Rules
